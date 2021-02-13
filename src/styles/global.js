@@ -15,7 +15,7 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 16px;
   }
 
