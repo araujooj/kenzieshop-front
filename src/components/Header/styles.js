@@ -7,13 +7,12 @@ export const NavLink = styled(Link)`
 
   color: #333;
 
-  svg {
+  > svg {
     transform: translateY(3.5px);
     margin-right: 10px;
   }
 
   span {
-    color: #8884ff;
-    font-weight: 600;
+    margin-left: 5px;
   }
 `;

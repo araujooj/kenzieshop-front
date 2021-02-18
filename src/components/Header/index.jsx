@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import { FiLogIn, FiShoppingCart } from "react-icons/fi";
 
 import { NavLink } from "./styles";
+import { useSelector } from "react-redux";
+import { Badge } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -20,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
   toolbar: {
-    flexWrap: "wrap",
+    justifyContent: "space-between",
   },
   toolbarTitle: {
     flexGrow: 1,
@@ -34,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
+
+  const cart = useSelector((state) => state.cart);
+
   return (
     <AppBar
       position="static"
@@ -42,20 +47,24 @@ export default function PrimarySearchAppBar() {
       className={classes.appBar}
     >
       <Toolbar className={classes.toolbar}>
-        <Typography
-          variant="h6"
-          color="inherit"
-          noWrap
-          className={classes.toolbarTitle}
-        >
-          Kenzieshoes
-        </Typography>
+        <NavLink to="/">
+          <Typography
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.toolbarTitle}
+          >
+            Kenzie Shop
+          </Typography>
+        </NavLink>
         <nav>
-          <NavLink>
-            <FiShoppingCart size={20} />
-            Carrinho <span> (7) </span>
+          <NavLink to="/cart">
+            <Badge badgeContent={cart.length} color="primary">
+              <FiShoppingCart size={20} />
+            </Badge>
+            <span> Carrinho </span>
           </NavLink>
-          <NavLink>
+          <NavLink to="/login">
             <FiLogIn size={20} />
             Entrar
           </NavLink>
