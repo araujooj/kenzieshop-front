@@ -11,6 +11,10 @@ const userReducer = (state = defaultState, action) => {
       const { token } = action;
 
       return { ...state, token };
+
+    case "@user/SIGN_OUT":
+      return defaultState;
+
     default:
       return state;
   }

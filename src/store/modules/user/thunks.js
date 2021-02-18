@@ -1,12 +1,16 @@
 import api from "../../../services/api";
 import { signIn } from "./actions";
 
-export const signInThunk = (userData) => async (dispatch) => {
-  const response = await api
+export const signInThunk = (userData, setError, history) => (dispatch) => {
+  api
     .post("/sessions/", userData)
-    .catch((e) => console.log(e));
+    .then((response) => {
+      localStorage.setItem("token", response.data.access);
 
-  localStorage.setItem("token", response.data.access);
-
-  dispatch(signIn(response.data.access));
+      dispatch(signIn(response.data.access));
+      history.push("/finish");
+    })
+    .catch((e) => {
+      return setError(true);
+    });
 };

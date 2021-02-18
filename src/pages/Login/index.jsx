@@ -7,8 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { signInThunk } from "../../store/modules/user/thunks";
 
 import { Container } from "./styles";
+import { useState } from "react";
 
 const Login = () => {
+  const [error, setError] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -29,7 +31,7 @@ const Login = () => {
   });
 
   const handleForm = (data) => {
-    dispatch(signInThunk(data));
+    dispatch(signInThunk(data, setError, history));
   };
 
   return (
@@ -72,6 +74,7 @@ const Login = () => {
             Enviar
           </Button>
         </div>
+        {error && <span color="red"> Usuario ou senha estão errados</span>}
       </form>
     </Container>
   );

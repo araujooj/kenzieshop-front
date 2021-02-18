@@ -46,6 +46,7 @@ const useStyles = makeStyles({
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
+  const { token } = useSelector((state) => state.user);
   const classes = useStyles();
   const history = useHistory();
 
@@ -114,7 +115,9 @@ function Cart() {
               variant="contained"
               color="primary"
               size="large"
-              onClick={() => history.push("/finish")}
+              onClick={() =>
+                token ? history.push("/finish") : history.push("/login")
+              }
             >
               Finalizar o pedido
             </Button>

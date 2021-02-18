@@ -38,6 +38,7 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles();
 
   const cart = useSelector((state) => state.cart);
+  const { token } = useSelector((state) => state.user);
 
   return (
     <AppBar
@@ -64,10 +65,12 @@ export default function PrimarySearchAppBar() {
             </Badge>
             <span> Carrinho </span>
           </NavLink>
-          <NavLink to="/login">
-            <FiLogIn size={20} />
-            Entrar
-          </NavLink>
+          {!token && (
+            <NavLink to="/login">
+              <FiLogIn size={20} />
+              Entrar
+            </NavLink>
+          )}
         </nav>
       </Toolbar>
     </AppBar>

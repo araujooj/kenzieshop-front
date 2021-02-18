@@ -1,11 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import formatValue from "../../utils/formatValue";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { FiShoppingCart } from "react-icons/fi";
 
 import { Container, ProductList } from "./styles";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/modules/cart/actions";
 
 function Home() {
