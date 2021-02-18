@@ -5,7 +5,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { Container, ProductList } from "./styles";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/modules/cart/actions";
+import { addToCartThunk } from "../../store/modules/cart/thunks";
 
 function Home() {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ function Home() {
 
                 <button
                   type="button"
-                  onClick={() => dispatch(addToCart(product))}
+                  onClick={() => dispatch(addToCartThunk(product))}
                 >
                   <span>Adicionar ao carrinho</span>
                 </button>
