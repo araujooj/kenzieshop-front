@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import formatValue from "../../utils/formatValue";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import AnimatedTerm from "../../components/AnimatedTerm";
 
 import { Container, ProductList } from "./styles";
 import { useDispatch } from "react-redux";
@@ -34,26 +35,35 @@ function Home() {
       {loading ? (
         <CircularProgress size={50} />
       ) : (
-        <ProductList>
-          {products.map((product) => (
-            <li key={product.id}>
-              <figure>
-                <img src={product.image} alt={product.name} />
-              </figure>
-              <strong>{product.title}</strong>
-              <div>
-                <span>{product.priceFormatted}</span>
+        <>
+          <iframe
+            title="ola"
+            width="768"
+            height="500"
+            src="http://localhost:3000/animatedTerm"
+          />
+        </>
 
-                <button
-                  type="button"
-                  onClick={() => dispatch(addToCartThunk(product))}
-                >
-                  <span>Adicionar ao carrinho</span>
-                </button>
-              </div>
-            </li>
-          ))}
-        </ProductList>
+        // <ProductList>
+        //   {products.map((product) => (
+        //     <li key={product.id}>
+        //       <figure>
+        //         <img src={product.image} alt={product.name} />
+        //       </figure>
+        //       <strong>{product.title}</strong>
+        //       <div>
+        //         <span>{product.priceFormatted}</span>
+
+        //         <button
+        //           type="button"
+        //           onClick={() => dispatch(addToCartThunk(product))}
+        //         >
+        //           <span>Adicionar ao carrinho</span>
+        //         </button>
+        //       </div>
+        //     </li>
+        //   ))}
+        // </ProductList>
       )}
     </Container>
   );

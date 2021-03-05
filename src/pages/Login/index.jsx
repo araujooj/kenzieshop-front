@@ -5,12 +5,17 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, TextField } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { signInThunk } from "../../store/modules/user/thunks";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 import { Container } from "./styles";
 import { useState } from "react";
 
 const Login = () => {
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -31,7 +36,9 @@ const Login = () => {
   });
 
   const handleForm = (data) => {
-    dispatch(signInThunk(data, setError, history));
+    setError(false);
+    setLoading(true);
+    dispatch(signInThunk(data, setError, setLoading, history, toast.error));
   };
 
   return (
@@ -74,6 +81,7 @@ const Login = () => {
             Enviar
           </Button>
         </div>
+        {loading && <span> Carregando ....</span>}
         {error && <span color="red"> Usuario ou senha estão errados</span>}
       </form>
     </Container>

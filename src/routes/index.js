@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import Cart from "../pages/Cart";
 import Login from "../pages/Login";
 import Finish from "../pages/Finish";
+import AnimatedTerm from "../components/AnimatedTerm";
 
 import Route from "./route";
 
@@ -14,6 +15,7 @@ const Routes = () => {
       <Route path="/cart" component={Cart} />
       <Route path="/login" component={Login} />
       <Route path="/finish" component={Finish} />
+      <Route path="/animatedTerm" component={AnimatedTerm} />
       <Route path="/dashboard" component={Finish} isPrivate />
     </Switch>
   );
