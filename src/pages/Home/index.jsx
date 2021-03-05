@@ -35,35 +35,26 @@ function Home() {
       {loading ? (
         <CircularProgress size={50} />
       ) : (
-        <>
-          <iframe
-            title="ola"
-            width="768"
-            height="500"
-            src="http://localhost:3000/animatedTerm"
-          />
-        </>
+        <ProductList>
+          {products.map((product) => (
+            <li key={product.id}>
+              <figure>
+                <img src={product.image} alt={product.name} />
+              </figure>
+              <strong>{product.title}</strong>
+              <div>
+                <span>{product.priceFormatted}</span>
 
-        // <ProductList>
-        //   {products.map((product) => (
-        //     <li key={product.id}>
-        //       <figure>
-        //         <img src={product.image} alt={product.name} />
-        //       </figure>
-        //       <strong>{product.title}</strong>
-        //       <div>
-        //         <span>{product.priceFormatted}</span>
-
-        //         <button
-        //           type="button"
-        //           onClick={() => dispatch(addToCartThunk(product))}
-        //         >
-        //           <span>Adicionar ao carrinho</span>
-        //         </button>
-        //       </div>
-        //     </li>
-        //   ))}
-        // </ProductList>
+                <button
+                  type="button"
+                  onClick={() => dispatch(addToCartThunk(product))}
+                >
+                  <span>Adicionar ao carrinho</span>
+                </button>
+              </div>
+            </li>
+          ))}
+        </ProductList>
       )}
     </Container>
   );
